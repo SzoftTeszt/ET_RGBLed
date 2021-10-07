@@ -13,6 +13,9 @@ void setup() {
   pinMode(g,OUTPUT);
   
   pinMode(A0,INPUT);
+  pinMode(A1,INPUT);
+  pinMode(A2,INPUT);
+  
   Serial.begin(9600);
 
   digitalWrite(r,1);   delay(500);
