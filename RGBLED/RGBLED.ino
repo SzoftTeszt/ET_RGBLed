@@ -9,6 +9,8 @@ int poti=0;
 
 int kapcs=2;
 
+bool mukodik=true;
+
 void setup() {
   pinMode(r,OUTPUT);
   pinMode(b,OUTPUT);
@@ -41,24 +43,33 @@ void setup() {
 }
 
 void loop() {
-  poti=analogRead(A0); //0-1023
-  fenyEro=map(poti,0,1023,0,255);
-  analogWrite(r,fenyEro);
-
-  poti=analogRead(A1); //0-1023
-  fenyEro=map(poti,0,1023,0,255);
-  analogWrite(g,fenyEro);
-
-  poti=analogRead(A2); //0-1023
-  fenyEro=map(poti,0,1023,0,255);
-  analogWrite(b,fenyEro);
-
+  if (mukodik){
+    poti=analogRead(A0); //0-1023
+    fenyEro=map(poti,0,1023,0,255);
+    analogWrite(r,fenyEro);
+  
+    poti=analogRead(A1); //0-1023
+    fenyEro=map(poti,0,1023,0,255);
+    analogWrite(g,fenyEro);
+  
+    poti=analogRead(A2); //0-1023
+    fenyEro=map(poti,0,1023,0,255);
+    analogWrite(b,fenyEro);
+  }
+  else
+  {
+    digitalWrite(r,0);
+    digitalWrite(g,0);
+    digitalWrite(b,0);
+  }
   
   if (digitalRead(kapcs)==0)
   {
     delay(100);
     if (digitalRead(kapcs)==0){
-      Serial.println("Gomb megnyomva!");
+      
+      mukodik=!mukodik;
+      Serial.println(mukodik);
       }
   }
   
