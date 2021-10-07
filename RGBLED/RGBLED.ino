@@ -7,6 +7,8 @@ byte irany=1;
 
 int poti=0;
 
+int kapcs=2;
+
 void setup() {
   pinMode(r,OUTPUT);
   pinMode(b,OUTPUT);
@@ -15,6 +17,7 @@ void setup() {
   pinMode(A0,INPUT);
   pinMode(A1,INPUT);
   pinMode(A2,INPUT);
+  pinMode(kapcs, INPUT_PULLUP);
   
   Serial.begin(9600);
 
@@ -49,6 +52,15 @@ void loop() {
   poti=analogRead(A2); //0-1023
   fenyEro=map(poti,0,1023,0,255);
   analogWrite(b,fenyEro);
+
+  
+  if (digitalRead(kapcs)==0)
+  {
+    delay(100);
+    if (digitalRead(kapcs)==0){
+      Serial.println("Gomb megnyomva!");
+      }
+  }
   
 /*  Serial.print("Analóg érték: ");
   Serial.print(poti);
