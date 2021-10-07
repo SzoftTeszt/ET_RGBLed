@@ -37,13 +37,22 @@ void setup() {
 void loop() {
   poti=analogRead(A0); //0-1023
   fenyEro=map(poti,0,1023,0,255);
+  analogWrite(r,fenyEro);
+
+  poti=analogRead(A1); //0-1023
+  fenyEro=map(poti,0,1023,0,255);
+  analogWrite(g,fenyEro);
+
+  poti=analogRead(A2); //0-1023
+  fenyEro=map(poti,0,1023,0,255);
+  analogWrite(b,fenyEro);
   
-  Serial.print("Analóg érték: ");
+/*  Serial.print("Analóg érték: ");
   Serial.print(poti);
   Serial.print("; Fényerő: ");
-  Serial.println(fenyEro);
+  Serial.println(fenyEro);*/
     
-  analogWrite(r,fenyEro); //fenyEro 0-255
+   //fenyEro 0-255
   /*if (fenyEro==255) {irany=-1;}
   if (fenyEro==0) irany=1;
   fenyEro=fenyEro+irany;
